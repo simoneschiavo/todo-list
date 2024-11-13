@@ -1,7 +1,7 @@
 import defaultProjectIcon from "./img/default-project-icon.svg";
 
 function renderDefaultProject(project) {
-    const defaultProjectsContainer = document.querySelector(".navbar > .default");
+    const defaultProjectsContainer = document.querySelector(".navbar > .created");
 
     const projectDiv = document.createElement("div");
     projectDiv.classList.add("project");
@@ -19,7 +19,7 @@ function renderDefaultProject(project) {
 }
 
 function renderCustomProject(project) {
-    const customProjectsContainer = document.querySelector(".navbar > .custom");
+    const customProjectsContainer = document.querySelector(".navbar > .preset");
 
     const projectDiv = document.createElement("div");
     projectDiv.classList.add("project");

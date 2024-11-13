@@ -14,3 +14,7 @@ const somedayProject = projectManager.createProject("Someday", "", somedayIcon);
 renderCustomProject(homeProject);
 renderCustomProject(todayProject);
 renderCustomProject(somedayProject);
+
+const testProject = projectManager.createProject("Test - Start here", "");
+
+renderDefaultProject(testProject);
