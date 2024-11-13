@@ -35,14 +35,14 @@ export class TaskManager {
     }
 
     deleteTask(index) {
-        if (index >= 0 && index < TaskManager.tasks.length) {
-            TaskManager.tasks.splice(index, 1);
+        if (index >= 0 && index < this.tasks.length) {
+            this.tasks.splice(index, 1);
             return true;
         }
         return false;
     }
 
     getAllTasks() {
-        return TaskManager.tasks;
+        return this.tasks;
     }
 }
