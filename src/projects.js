@@ -4,6 +4,7 @@ export class Project {
     constructor(name, description) {
         this.name = name;
         this.description = description;
+        this.icon = icon;
         this.taskManager = new TaskManager();
     }
 
