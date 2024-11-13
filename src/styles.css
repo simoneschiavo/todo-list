@@ -81,3 +81,17 @@ body {
     bottom: 0;
     border-top: 2px solid var(--mid-grey);
 }
+
+/* Navbar */
+.projects-container {
+    margin: 1rem 2rem;
+}
+
+.project {
+    display: flex;
+    gap: .5rem;
+}
+
+.project > h3 {
+    font-weight: 600;
+}
