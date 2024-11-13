@@ -2,7 +2,7 @@ import { TaskManager } from "./tasks";
 import defaultProjectIcon from "./img/default-project-icon.svg";
 
 export class Project {
-    constructor(name, description, icon = defaultProjectIcon) {
+    constructor(name, description = "", icon = defaultProjectIcon) {
         this.name = name;
         this.description = description;
         this.icon = icon;
@@ -35,7 +35,7 @@ export class ProjectManager {
         this.projects = [];
     }
 
-    createProject(name, description, icon = defaultProjectIcon) {
+    createProject(name, description = "", icon = defaultProjectIcon) {
         const project = new Project(name, description, icon);
         this.projects.push(project);
         return project;

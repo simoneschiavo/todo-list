@@ -7,6 +7,7 @@ import somedayIcon from "./img/someday-icon.svg";
 
 const projectManager = new ProjectManager();
 
+// Create the default projects
 const homeProject = projectManager.createProject("Home", "", homeIcon);
 const todayProject = projectManager.createProject("Today", "", todayIcon);
 const somedayProject = projectManager.createProject("Someday", "", somedayIcon);
@@ -15,6 +16,6 @@ renderCustomProject(homeProject);
 renderCustomProject(todayProject);
 renderCustomProject(somedayProject);
 
-const testProject = projectManager.createProject("Test - Start here", "");
+const testProject = projectManager.createProject("Test - Start here");
 
 renderDefaultProject(testProject);
