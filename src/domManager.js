@@ -71,6 +71,15 @@ function renderTasks(project) {
 
             taskDiv.append(title, description, dueDate, priority);
 
+            const deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+            deleteButton.addEventListener("click", () => {
+                project.deleteTask(index);
+                renderTasks(project);
+            });
+
+            taskDiv.appendChild(deleteButton);
+
             tasksContainer.appendChild(taskDiv);
         })
     }
