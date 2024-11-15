@@ -18,7 +18,11 @@ export class Project {
     }
 
     createTask(title, description, dueDate, priority) {
-        return this.taskManager.createTask(title, description, dueDate, priority);
+        const task = this.taskManager.createTask(title, description, dueDate, priority);
+        if (this.homeProject && this !== this.homeProject) {
+            this.homeProject.createTask(title, description, dueDate, priority);
+        }
+        return task;
     }
 
     updateTask(index, updatedData) {
