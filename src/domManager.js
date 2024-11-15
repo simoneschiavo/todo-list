@@ -15,6 +15,10 @@ function renderDefaultProject(project) {
 
     projectDiv.append(icon, title);
 
+    projectDiv.addEventListener("click", () => {
+        renderTasks(project);
+    });
+
     defaultProjectsContainer.appendChild(projectDiv);
 }
 
@@ -33,10 +37,13 @@ function renderCustomProject(project) {
 
     projectDiv.append(icon, title);
 
+    projectDiv.addEventListener("click", () => {
+        renderTasks(project);
+    });
+
     customProjectsContainer.appendChild(projectDiv);
 }
 
-// Add a util to render tasks from a Project
 function renderTasks(project) {
     const tasksContainer = document.querySelector(".tasksContainer");
     tasksContainer.innerHTML = "";
