@@ -7,6 +7,7 @@ export class Project {
         this.description = description;
         this.icon = icon;
         this.taskManager = new TaskManager();
+
     }
 
     getAllTasks() {
@@ -18,11 +19,7 @@ export class Project {
     }
 
     createTask(title, description, dueDate, priority) {
-        const task = this.taskManager.createTask(title, description, dueDate, priority);
-        if (this.homeProject && this !== this.homeProject) {
-            this.homeProject.createTask(title, description, dueDate, priority);
-        }
-        return task;
+        return this.taskManager.createTask(title, description, dueDate, priority);
     }
 
     updateTask(index, updatedData) {

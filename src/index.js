@@ -4,6 +4,7 @@ import { renderDefaultProject, renderCustomProject } from "./domManager";
 import homeIcon from "./img/home-icon.svg";
 import todayIcon from "./img/today-icon.svg";
 import somedayIcon from "./img/someday-icon.svg";
+import defaultProjectIcon from "./img/default-project-icon.svg";
 
 const projectManager = new ProjectManager();
 
@@ -17,7 +18,7 @@ renderCustomProject(homeProject);
 renderCustomProject(todayProject);
 renderCustomProject(somedayProject);
 
-const testProject = projectManager.createProject("Test - Start here");
+const testProject = projectManager.createProject("Test - Start here", "", defaultProjectIcon);
 testProject.taskManager.createTask(
   "Test",
   "Test description",
