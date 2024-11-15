@@ -45,7 +45,7 @@ function renderCustomProject(project) {
 }
 
 function renderTasks(project) {
-    const tasksContainer = document.querySelector(".tasksContainer");
+    const tasksContainer = document.querySelector(".tasks-container");
     tasksContainer.innerHTML = "";
 
     const tasks = project.getAllTasks();
