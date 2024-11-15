@@ -36,4 +36,37 @@ function renderCustomProject(project) {
     customProjectsContainer.appendChild(projectDiv);
 }
 
-export { renderDefaultProject, renderCustomProject };
+// Add a util to render tasks from a Project
+function renderTasks(project) {
+    const tasksContainer = document.querySelector(".tasksContainer");
+    tasksContainer.innerHTML = "";
+
+    const tasks = project.getAllTasks();
+
+    if (tasks.length === 0) {
+        tasksContainer.innerText = "This projects looks empty."
+    } else {
+        tasks.forEach((task, index) => {
+            const taskDiv = document.createElement("div");
+            taskDiv.classList.add("task");
+
+            const title = document.createElement("h3");
+            title.innerText = task.title;
+
+            const description = document.createElement("p");
+            description.innerText = task.description;
+
+            const dueDate = document.createElement("p");
+            dueDate.innerText = task.dueDate;
+
+            const priority = document.createElement("p");
+            priority.innerText = task.priority;
+
+            taskDiv.append(title, description, dueDate, priority);
+
+            tasksContainer.appendChild(taskDiv);
+        })
+    }
+}
+
+export { renderDefaultProject, renderCustomProject, renderTasks };
