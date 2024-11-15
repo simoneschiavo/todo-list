@@ -68,11 +68,11 @@ function renderTasks(project) {
             const taskDiv = document.createElement("div");
             taskDiv.classList.add("task");
 
-            const title = document.createElement("h2");
+            const title = document.createElement("h3");
             title.innerText = task.title;
 
-            const description = document.createElement("p");
-            description.innerText = task.description;
+            /*const description = document.createElement("p");
+            description.innerText = task.description;*/
 
             const dueDate = document.createElement("p");
             dueDate.innerText = task.dueDate;
@@ -80,7 +80,7 @@ function renderTasks(project) {
             const priority = document.createElement("p");
             priority.innerText = task.priority;
 
-            taskDiv.append(title, description, dueDate, priority);
+            taskDiv.append(title, /*description,*/ dueDate, priority);
 
             const deleteButton = document.createElement("button");
             deleteButton.innerText = "Delete";

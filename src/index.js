@@ -18,7 +18,7 @@ renderCustomProject(homeProject);
 renderCustomProject(todayProject);
 renderCustomProject(somedayProject);
 
-const testProject = projectManager.createProject("Test - Start here", "", defaultProjectIcon);
+const testProject = projectManager.createProject("Test - Start here", "Here you will find tasks to get familiar with the app. Mark them complete as your progress on your journey with ToDoPot.", defaultProjectIcon);
 testProject.taskManager.createTask(
   "Test",
   "Test description",

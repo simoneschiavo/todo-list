@@ -54,6 +54,7 @@ h1, h2, h3, h4, h5, h6 {
     --darker-grey: #9A9DA0;
     --white: #FFF;
     --light-blue: #669FFB;
+    --dark-blue: #1268C4;
     --yellow: #FDD315;
     --red: #F94876;
     --light-green: #B9CA83;
@@ -93,6 +94,10 @@ body {
     margin: 1rem 2rem;
 }
 
+.projects-container:first-child {
+    margin-top: 4rem;
+}
+
 .project {
     display: flex;
     gap: .5rem;
@@ -101,4 +106,16 @@ body {
 
 .project > h3 {
     font-weight: 600;
+}
+
+/* Right Side */
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    margin: 4rem 8rem 2rem 5rem;
+}
+
+.projects-info-container > h1 {
+    color: var(--dark-blue);
 }
