@@ -45,6 +45,17 @@ function renderCustomProject(project) {
 }
 
 function renderTasks(project) {
+    const projectsContainer = document.querySelector(".projects-info-container");
+    projectsContainer.innerHTML = "";
+
+    const projectTitle = document.createElement("h1");
+    projectTitle.innerText = project.name;
+
+    const projectDescription = document.createElement("p");
+    projectDescription.innerText = project.description;
+
+    projectsContainer.append(projectTitle, projectDescription);
+    
     const tasksContainer = document.querySelector(".tasks-container");
     tasksContainer.innerHTML = "";
 
@@ -57,7 +68,7 @@ function renderTasks(project) {
             const taskDiv = document.createElement("div");
             taskDiv.classList.add("task");
 
-            const title = document.createElement("h3");
+            const title = document.createElement("h2");
             title.innerText = task.title;
 
             const description = document.createElement("p");
