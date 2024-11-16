@@ -20,7 +20,7 @@ renderCustomProject(somedayProject);
 
 const testProject = projectManager.createProject("Test - Start here", "Here you will find tasks to get familiar with the app. Mark them complete as your progress on your journey with ToDoPot.", defaultProjectIcon);
 testProject.taskManager.createTask(
-  "Test",
+  "Create your first task",
   "Test description",
   "25/12/2024",
   "High"

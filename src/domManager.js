@@ -1,4 +1,5 @@
 import defaultProjectIcon from "./img/default-project-icon.svg";
+import deleteIcon from "./img/delete-icon.svg";
 
 function renderDefaultProject(project) {
     const defaultProjectsContainer = document.querySelector(".navbar > .created");
@@ -75,15 +76,21 @@ function renderTasks(project) {
             description.innerText = task.description;*/
 
             const dueDate = document.createElement("p");
+            dueDate.classList.add("task-date");
+            dueDate.classList.add("tag");
             dueDate.innerText = task.dueDate;
 
             const priority = document.createElement("p");
+            priority.classList.add("tag");
+            const priorityLowerCase = task.priority.toLowerCase();
+            priority.classList.add(priorityLowerCase);
             priority.innerText = task.priority;
 
-            taskDiv.append(title, /*description,*/ dueDate, priority);
+            taskDiv.append(dueDate, title, /*description,*/ priority);
 
-            const deleteButton = document.createElement("button");
-            deleteButton.innerText = "Delete";
+            const deleteButton = document.createElement("img");
+            deleteButton.classList.add("delete-btn");
+            deleteButton.src = deleteIcon;
             deleteButton.addEventListener("click", () => {
                 project.deleteTask(index);
                 renderTasks(project);
