@@ -1,5 +1,6 @@
 import defaultProjectIcon from "./img/default-project-icon.svg";
 import deleteIcon from "./img/delete-icon.svg";
+import updateIcon from "./img/update-icon.svg";
 
 function renderDefaultProject(project) {
     const defaultProjectsContainer = document.querySelector(".navbar > .created");
@@ -101,6 +102,15 @@ function renderTasks(project) {
             priority.innerText = task.priority;
 
             taskDiv.append(checkbox, dueDate, title, /*description,*/ priority);
+
+            const updateButton = document.createElement("img");
+            updateButton.classList.add("update-btn");
+            updateButton.src = updateIcon;
+            updateButton.addEventListener("click", () => {
+                openUpdateTaskModal();
+            });
+
+            taskDiv.appendChild(updateButton);
 
             const deleteButton = document.createElement("img");
             deleteButton.classList.add("delete-btn");

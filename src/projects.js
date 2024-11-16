@@ -45,14 +45,6 @@ export class Project {
         }
         return task;
     }
-
-    /*deleteTask(index) {
-        if (index >= 0 && index < this.tasks.length) {
-            this.tasks.splice(index, 1);
-            return true;
-        }
-        return false;
-    }*/
     
     deleteTask(identifier) {
         let index;
