@@ -1,5 +1,8 @@
 import { TaskManager } from "./tasks";
 import defaultProjectIcon from "./img/default-project-icon.svg";
+import homeIcon from "./img/home-icon.svg";
+import todayIcon from "./img/today-icon.svg";
+import somedayIcon from "./img/someday-icon.svg";
 
 export class Project {
     constructor(name, description = "", icon = defaultProjectIcon) {
@@ -19,7 +22,16 @@ export class Project {
     }
 
     createTask(title, description, dueDate, priority) {
-        return this.taskManager.createTask(title, description, dueDate, priority);
+        const task = this.taskManager.createTask(title, description, dueDate, priority);
+        if (this.name !== "Home") {
+            this.addTaskToHomeProject(title, description, dueDate, priority);
+        }
+        return task;
+    }
+
+    addTaskToHomeProject(title, description, dueDate, priority) {
+        const task = homeProject.createTask(title, description, dueDate, priority);
+        return task
     }
 
     updateTask(index, updatedData) {
@@ -66,3 +78,8 @@ export class ProjectManager {
         return false;
     }
 }
+
+export const projectManager = new ProjectManager();
+export const homeProject = projectManager.createProject("Home", "", homeIcon);
+export const todayProject = projectManager.createProject("Today", "", todayIcon);
+export const somedayProject = projectManager.createProject("Someday", "", somedayIcon);
