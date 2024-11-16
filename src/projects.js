@@ -22,7 +22,7 @@ export class Project {
     }
 
     createTask(title, description, dueDate, priority) {
-        const task = { title, description, dueDate, priority };
+        const task = { id: Date.now().toString(), title, description, dueDate, priority };
         this.tasks.push(task);
         if (this.name !== "Home") {
             this.addTaskToHomeProject(title, description, dueDate, priority);
@@ -42,6 +42,17 @@ export class Project {
             task.description = updatedData.description || task.description;
             task.dueDate = updatedData.dueDate || task.dueDate;
             task.priority = updatedData.priority || task.priority;
+
+            projectManager.getAllProjects().forEach((project) => {
+              project.tasks.forEach((t) => {
+                if (t.id === task.id) {
+                  t.title = updatedData.title || t.title;
+                  t.description = updatedData.description || t.description;
+                  t.dueDate = updatedData.dueDate || t.dueDate;
+                  t.priority = updatedData.priority || t.priority;
+                }
+              });
+            });
         }
         return task;
     }
