@@ -92,6 +92,6 @@ export class ProjectManager {
 }
 
 export const projectManager = new ProjectManager();
-export const homeProject = projectManager.createProject("Home", "", homeIcon);
+export const homeProject = projectManager.createProject("Home", "All your tasks are here.", homeIcon);
 export const todayProject = projectManager.createProject("Today", "", todayIcon);
 export const somedayProject = projectManager.createProject("Someday", "", somedayIcon);
