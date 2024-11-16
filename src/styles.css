@@ -183,7 +183,7 @@ dialog {
     color: var(--red);
 }
 
-.delete-btn:hover, .update-btn:hover, .show-more-btn:hover {
+.delete-btn:hover, .update-btn:hover, .show-more-btn:hover, .close-btn:hover {
     cursor: pointer;
 }
 

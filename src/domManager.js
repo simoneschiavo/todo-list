@@ -2,6 +2,7 @@ import defaultProjectIcon from "./img/default-project-icon.svg";
 import deleteIcon from "./img/delete-icon.svg";
 import updateIcon from "./img/update-icon.svg";
 import showMoreIcon from "./img/open-more.svg";
+import closeIcon from "./img/close-icon.svg";
 
 function renderDefaultProject(project) {
     const defaultProjectsContainer = document.querySelector(".navbar > .created");
@@ -114,7 +115,77 @@ function renderTasks(project) {
 
           basicInfoWrapper.append(checkbox, dueDate, showMoreButton, title, priority);
 
-          const updateTaskModal = document.createElement("dialog");
+            const updateTaskModal = document.createElement("dialog");
+            const closeButton = document.createElement("img");
+            closeButton.classList.add("close-btn");
+            closeButton.src = closeIcon;
+            closeButton.addEventListener("click", () => {
+                updateTaskModal.close();
+            })
+
+            updateTaskModal.appendChild(closeButton);
+
+            const updateForm = document.createElement("form");
+            const titleLabel = document.createElement("label");
+            titleLabel.innerText = "Title: ";
+            const titleInput = document.createElement("input");
+            titleInput.type = "text";
+            titleInput.name = "title";
+            titleInput.id = "title";
+            titleInput.value = task.title;
+            titleLabel.appendChild(titleInput);
+            const descriptionLabel = document.createElement("label");
+            descriptionLabel.innerText = "Description: ";
+            const descriptionInput = document.createElement("input");
+            descriptionInput.type = "text";
+            descriptionInput.name = "description";
+            descriptionInput.id = "description"
+            descriptionInput.value = task.description;
+            descriptionLabel.appendChild(descriptionInput);
+            const dueDateLabel = document.createElement("label");
+            dueDateLabel.innerText = "Due date: ";
+            const dueDateInput = document.createElement("input");
+            dueDateInput.type = "date";
+            dueDateInput.name = "due-date";
+            dueDateInput.id = "due-date";
+            dueDateInput.value = task.dueDate;
+            dueDateLabel.appendChild(dueDateInput);
+            const priorityLabel = document.createElement("label");
+            priorityLabel.innerText = "Priority: ";
+            const priorityInput = document.createElement("select");
+            priorityInput.name = "priority";
+            priorityInput.id = "priority";
+            const priorities = ["High", "Medium", "Low"];
+            priorities.forEach(priority => {
+                const priorityOption = document.createElement("option");
+                priorityOption.value = priority.toLowerCase();
+                priorityOption.text = priority;
+                if (priority.toLowerCase() === task.priority.toLowerCase()) {
+                    priorityOption.selected = true;
+                }
+                priorityInput.appendChild(priorityOption);
+            });
+            priorityLabel.appendChild(priorityInput);
+            const submitButton = document.createElement("button");
+            submitButton.innerText = "Update";
+            submitButton.type = "submit";
+
+            updateForm.append(titleLabel, descriptionLabel, dueDateLabel, priorityLabel, submitButton);
+
+            updateForm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                const updatedData = {
+                    title: titleInput.value,
+                    description: descriptionInput.value,
+                    dueDate: dueDateInput.value,
+                    priority: priorityInput.value
+                };
+                project.updateTask(index, updatedData);
+                updateTaskModal.close();
+                renderTasks(project);
+            });
+
+            updateTaskModal.appendChild(updateForm);
 
           const updateButton = document.createElement("img");
           updateButton.classList.add("update-btn");
