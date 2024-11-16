@@ -116,6 +116,8 @@ function renderTasks(project) {
           basicInfoWrapper.append(checkbox, dueDate, showMoreButton, title, priority);
 
             const updateTaskModal = document.createElement("dialog");
+            const modalContainer = document.createElement("div");
+            modalContainer.classList.add("modal-container");
             const closeButton = document.createElement("img");
             closeButton.classList.add("close-btn");
             closeButton.src = closeIcon;
@@ -123,7 +125,7 @@ function renderTasks(project) {
                 updateTaskModal.close();
             })
 
-            updateTaskModal.appendChild(closeButton);
+            modalContainer.appendChild(closeButton);
 
             const updateForm = document.createElement("form");
             const titleLabel = document.createElement("label");
@@ -158,7 +160,7 @@ function renderTasks(project) {
             const priorities = ["High", "Medium", "Low"];
             priorities.forEach(priority => {
                 const priorityOption = document.createElement("option");
-                priorityOption.value = priority.toLowerCase();
+                priorityOption.value = priority;
                 priorityOption.text = priority;
                 if (priority.toLowerCase() === task.priority.toLowerCase()) {
                     priorityOption.selected = true;
@@ -185,7 +187,8 @@ function renderTasks(project) {
                 renderTasks(project);
             });
 
-            updateTaskModal.appendChild(updateForm);
+            modalContainer.appendChild(updateForm);
+            updateTaskModal.appendChild(modalContainer);
 
           const updateButton = document.createElement("img");
           updateButton.classList.add("update-btn");

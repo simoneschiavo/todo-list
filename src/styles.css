@@ -84,7 +84,7 @@ dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 5rem;
+    padding: 1rem;
     border: none;
     border-radius: .5rem;
 }
@@ -195,4 +195,55 @@ dialog {
 
 .hidden {
     display: none;
+}
+
+/* Dialog */
+.modal-container {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+}
+
+.modal-container > img {
+    align-self: end;
+}
+
+.modal-container > form {
+    margin: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.modal-container > form > label {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+    font-weight: bold;
+}
+
+input, select {
+    border-radius: .5rem;
+    border: 1px solid var(--darker-grey);
+    padding: .25rem .5rem;
+    color: var(--very-dark-grey);
+    font-weight: 500;
+}
+
+.modal-container > form > button {
+    all: unset;
+    background-color: var(--light-blue);
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    transition-duration: 500ms;
+}
+
+.modal-container > form > button:hover {
+    background-color: var(--dark-blue);
+    transition-duration: 500ms;
+    cursor: pointer;
 }
