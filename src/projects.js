@@ -46,9 +46,28 @@ export class Project {
         return task;
     }
 
-    deleteTask(index) {
+    /*deleteTask(index) {
         if (index >= 0 && index < this.tasks.length) {
             this.tasks.splice(index, 1);
+            return true;
+        }
+        return false;
+    }*/
+    
+    deleteTask(identifier) {
+        let index;
+        if (typeof identifier === "number") {
+            index = identifier;
+        } else if (typeof identifier === "string") {
+            index = this.tasks.findIndex(task => task.title === identifier);
+        }
+
+        if (index >= 0 && index < this.tasks.length) {
+            const taskToDelete = this.tasks[index];
+            this.tasks.splice(index, 1);
+            if (this.name !== "Home") {
+                homeProject.deleteTask(taskToDelete.title);
+            }
             return true;
         }
         return false;
