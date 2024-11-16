@@ -1,6 +1,7 @@
 import defaultProjectIcon from "./img/default-project-icon.svg";
 import deleteIcon from "./img/delete-icon.svg";
 import updateIcon from "./img/update-icon.svg";
+import showMoreIcon from "./img/open-more.svg";
 
 function renderDefaultProject(project) {
     const defaultProjectsContainer = document.querySelector(".navbar > .created");
@@ -67,65 +68,86 @@ function renderTasks(project) {
         tasksContainer.innerText = "This projects looks empty."
     } else {
         tasks.forEach((task, index) => {
-            const taskDiv = document.createElement("div");
-            taskDiv.classList.add("task");
+          const taskDiv = document.createElement("div");
+          taskDiv.classList.add("task");
 
-            const checkbox = document.createElement("input");
-            checkbox.type = "checkbox";
-            checkbox.classList.add("checkbox");
-            checkbox.addEventListener("change", () => {
-                if (checkbox.checked) {
-                    title.classList.add("completed");
-                    taskDiv.classList.add("task-completed");
-                } else {
-                    title.classList.remove("completed");
-                    taskDiv.classList.remove("task-completed");
-                }
+          const basicInfoWrapper = document.createElement("div");
+          basicInfoWrapper.classList.add("basic-info-wrapper");
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.classList.add("checkbox");
+          checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                title.classList.add("completed");
+                description.classList.add("completed");
+              taskDiv.classList.add("task-completed");
+            } else {
+                title.classList.remove("completed");
+                description.classList.remove("completed");
+              taskDiv.classList.remove("task-completed");
+            }
+          });
+
+          const title = document.createElement("h3");
+          title.innerText = task.title;
+
+          const dueDate = document.createElement("p");
+          dueDate.classList.add("task-date");
+          dueDate.classList.add("tag");
+          dueDate.innerText = task.dueDate;
+
+          const priority = document.createElement("p");
+          priority.classList.add("tag");
+          priority.classList.add("task-priority");
+          const priorityLowerCase = task.priority.toLowerCase();
+          priority.classList.add(priorityLowerCase);
+          priority.innerText = task.priority;
+
+          const showMoreButton = document.createElement("img");
+          showMoreButton.classList.add("show-more-btn");
+            showMoreButton.src = showMoreIcon;
+            showMoreButton.addEventListener("click", () => {
+                descriptionWrapper.classList.toggle("hidden");
             })
+            
 
-            const title = document.createElement("h3");
-            title.innerText = task.title;
+          basicInfoWrapper.append(checkbox, dueDate, showMoreButton, title, priority);
 
-            /*const description = document.createElement("p");
-            description.innerText = task.description;*/
+          const updateTaskModal = document.createElement("dialog");
 
-            const dueDate = document.createElement("p");
-            dueDate.classList.add("task-date");
-            dueDate.classList.add("tag");
-            dueDate.innerText = task.dueDate;
+          const updateButton = document.createElement("img");
+          updateButton.classList.add("update-btn");
+          updateButton.src = updateIcon;
+          updateButton.addEventListener("click", () => {
+            updateTaskModal.showModal();
+          });
 
-            const priority = document.createElement("p");
-            priority.classList.add("tag");
-            priority.classList.add("task-priority");
-            const priorityLowerCase = task.priority.toLowerCase();
-            priority.classList.add(priorityLowerCase);
-            priority.innerText = task.priority;
+          basicInfoWrapper.appendChild(updateTaskModal);
+          basicInfoWrapper.appendChild(updateButton);
 
-            taskDiv.append(checkbox, dueDate, title, /*description,*/ priority);
+          const deleteButton = document.createElement("img");
+          deleteButton.classList.add("delete-btn");
+          deleteButton.src = deleteIcon;
+          deleteButton.addEventListener("click", () => {
+            project.deleteTask(index);
+            renderTasks(project);
+          });
 
-            const updateTaskModal = document.createElement("dialog");
+          basicInfoWrapper.appendChild(deleteButton);
 
-            const updateButton = document.createElement("img");
-            updateButton.classList.add("update-btn");
-            updateButton.src = updateIcon;
-            updateButton.addEventListener("click", () => {
-                updateTaskModal.showModal();
-            });
+          const descriptionWrapper = document.createElement("div");
+            descriptionWrapper.classList.add("description-wrapper");
+            descriptionWrapper.classList.add("hidden");
+          const description = document.createElement("p");
+            description.innerText = task.description;
+            
+            descriptionWrapper.appendChild(description);
 
-            taskDiv.appendChild(updateTaskModal);
-            taskDiv.appendChild(updateButton);
+          taskDiv.appendChild(basicInfoWrapper);
+          taskDiv.appendChild(descriptionWrapper);
 
-            const deleteButton = document.createElement("img");
-            deleteButton.classList.add("delete-btn");
-            deleteButton.src = deleteIcon;
-            deleteButton.addEventListener("click", () => {
-                project.deleteTask(index);
-                renderTasks(project);
-            });
-
-            taskDiv.appendChild(deleteButton);
-
-            tasksContainer.appendChild(taskDiv);
+          tasksContainer.appendChild(taskDiv);
         })
     }
 }

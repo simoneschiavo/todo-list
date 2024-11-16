@@ -138,10 +138,16 @@ dialog {
 
 .task {
     display: flex;
-    gap: 1rem;
-    align-items: center;
+    flex-direction: column;
+    gap: .25rem;
     padding: .5rem 1.5rem;
     border-radius: .5rem;
+}
+
+.basic-info-wrapper {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 .task-completed {
@@ -153,7 +159,7 @@ dialog {
     color: var(--darker-grey);
 }
 
-.task > h3 {
+.basic-info-wrapper > h3 {
     font-weight: 400;
 }
 
@@ -177,6 +183,16 @@ dialog {
     color: var(--red);
 }
 
-.delete-btn:hover {
+.delete-btn:hover, .update-btn:hover, .show-more-btn:hover {
     cursor: pointer;
+}
+
+.description-wrapper > p {
+    color: var(--darker-grey);
+    font-size: .75rem;
+    margin-left: 10rem;
+}
+
+.hidden {
+    display: none;
 }
