@@ -65,9 +65,11 @@ export class Project {
         if (index >= 0 && index < this.tasks.length) {
             const taskToDelete = this.tasks[index];
             this.tasks.splice(index, 1);
-            if (this.name !== "Home") {
-                homeProject.deleteTask(taskToDelete.title);
-            }
+            projectManager.getAllProjects().forEach(project => {
+                if (project.name !== this.name) {
+                  project.deleteTask(taskToDelete.title);
+                }
+            });
             return true;
         }
         return false;
