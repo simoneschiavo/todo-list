@@ -130,6 +130,17 @@ body {
     display: flex;
     gap: 1rem;
     align-items: center;
+    padding: .5rem 1.5rem;
+    border-radius: .5rem;
+}
+
+.task-completed {
+    background-color: var(--light-grey);
+}
+
+.completed {
+    text-decoration: line-through;
+    color: var(--darker-grey);
 }
 
 .task > h3 {
@@ -145,6 +156,10 @@ body {
 .task-date {
     background-color: var(--mid-grey);
     color: var(--very-dark-grey);
+}
+
+.task-priority {
+    margin-left: auto;
 }
 
 .high {

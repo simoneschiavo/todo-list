@@ -69,6 +69,19 @@ function renderTasks(project) {
             const taskDiv = document.createElement("div");
             taskDiv.classList.add("task");
 
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.classList.add("checkbox");
+            checkbox.addEventListener("change", () => {
+                if (checkbox.checked) {
+                    title.classList.add("completed");
+                    taskDiv.classList.add("task-completed");
+                } else {
+                    title.classList.remove("completed");
+                    taskDiv.classList.remove("task-completed");
+                }
+            })
+
             const title = document.createElement("h3");
             title.innerText = task.title;
 
@@ -82,11 +95,12 @@ function renderTasks(project) {
 
             const priority = document.createElement("p");
             priority.classList.add("tag");
+            priority.classList.add("task-priority");
             const priorityLowerCase = task.priority.toLowerCase();
             priority.classList.add(priorityLowerCase);
             priority.innerText = task.priority;
 
-            taskDiv.append(dueDate, title, /*description,*/ priority);
+            taskDiv.append(checkbox, dueDate, title, /*description,*/ priority);
 
             const deleteButton = document.createElement("img");
             deleteButton.classList.add("delete-btn");
