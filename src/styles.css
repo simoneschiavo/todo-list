@@ -56,11 +56,15 @@ h1, h2, h3, h4, h5, h6 {
     --white: #FFF;
     --light-blue: #669FFB;
     --dark-blue: #1268C4;
+    --light-yellow: #FEF7E8;
     --yellow: #FDD315;
+    --dark-yellow: #BB903B;
     --light-red: #FEEDED;
     --red: #F94876;
     --light-green: #B9CA83;
     --dark-green: #3BA08A;
+    --green-bg: #EBF9F1;
+    --green-text: #4D9E6B;
 }
 
 body {
@@ -99,7 +103,19 @@ dialog {
 .navbar {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
+}
+
+.logo {
+    margin: 1rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.logo > .title {
+    font-weight: 900;
+    color: var(--dark-blue);
+    font-size: 3rem;
 }
 
 .projects-container {
@@ -181,6 +197,16 @@ dialog {
 .high {
     background-color: var(--light-red);
     color: var(--red);
+}
+
+.medium {
+    background-color: var(--light-yellow);
+    color: var(--dark-yellow);
+}
+
+.low {
+    background-color: var(--green-bg);
+    color: var(--green-text);
 }
 
 .delete-btn:hover, .update-btn:hover, .show-more-btn:hover, .close-btn:hover {
