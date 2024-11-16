@@ -9,20 +9,21 @@ export class Project {
         this.name = name;
         this.description = description;
         this.icon = icon;
-        this.taskManager = new TaskManager();
+        this.tasks = [];
 
     }
 
     getAllTasks() {
-        return this.taskManager.getAllTasks();
+        return this.tasks;
     }
 
     getTask(index) {
-        return this.taskManager.getTask(index);
+        return this.tasks[index];
     }
 
     createTask(title, description, dueDate, priority) {
-        const task = this.taskManager.createTask(title, description, dueDate, priority);
+        const task = { title, description, dueDate, priority };
+        this.tasks.push(task);
         if (this.name !== "Home") {
             this.addTaskToHomeProject(title, description, dueDate, priority);
         }
@@ -35,11 +36,22 @@ export class Project {
     }
 
     updateTask(index, updatedData) {
-        return this.taskManager.updateTask(index, updatedData);
+        const task = this.tasks[index];
+        if (task) {
+            task.title = updatedData.title || task.title;
+            task.description = updatedData.description || task.description;
+            task.dueDate = updatedData.dueDate || task.dueDate;
+            task.priority = updatedData.priority || task.priority;
+        }
+        return task;
     }
 
     deleteTask(index) {
-        return this.taskManager.deleteTask(index);
+        if (index >= 0 && index < this.tasks.length) {
+            this.tasks.splice(index, 1);
+            return true;
+        }
+        return false;
     }
 }
 

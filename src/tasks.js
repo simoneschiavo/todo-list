@@ -7,7 +7,7 @@ class Task {
     }
 }
 
-export class TaskManager {
+/*export class TaskManager {
     constructor() {
         this.tasks = [];
     }
@@ -45,4 +45,4 @@ export class TaskManager {
     getAllTasks() {
         return this.tasks;
     }
-}
+}*/
