@@ -103,13 +103,16 @@ function renderTasks(project) {
 
             taskDiv.append(checkbox, dueDate, title, /*description,*/ priority);
 
+            const updateTaskModal = document.createElement("dialog");
+
             const updateButton = document.createElement("img");
             updateButton.classList.add("update-btn");
             updateButton.src = updateIcon;
             updateButton.addEventListener("click", () => {
-                openUpdateTaskModal();
+                updateTaskModal.showModal();
             });
 
+            taskDiv.appendChild(updateTaskModal);
             taskDiv.appendChild(updateButton);
 
             const deleteButton = document.createElement("img");
